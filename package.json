@@ -1,0 +1,48 @@
+{
+  "name": "daskeyboard-applet--cpu-temp",
+  "displayName": "CPU Temp",
+  "version": "0.1.0",
+  "description": "Displays CPU temperature.",
+  "longDescription": "Monitor your CPU temperature from your Das Keyboard Q series",
+  "officialProductName": "CPU Temp",
+  "appUrl": "",
+  "isSingleton": true,
+  "videoUrl": "",
+  "icon": "assets/icon.png",
+  "image": "assets/image-missing.png",
+  "publisher": "Steve Fulghum",
+  "authorName": "Steve Fulghum",
+  "authorUrl": "",
+  "issuesUrl": "https://github.com/stevefulghum/daskeyboard-applet--cpu-tempissues",
+  "homePageUrl": "https://github.com/stevefulghum/daskeyboard-applet--cpu-temp",
+  "developerRepoUrl": "https://github.com/stevefulghum/daskeyboard-applet--cpu-temp",
+  "licenseUrl": "https://opensource.org/licenses/MIT",
+  "changelogUrl": "CHANGELOG.md",
+  "license": "MIT",
+  "readMeUrl": "README.md",
+  "readMeEndUserUrl": "README_ENDUSER.md",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+  },
+  "engines": {
+    "das-keyboard-q": "3.0.0"
+  },
+  "dependencies": {
+    "daskeyboard-applet": "^2.10.12",
+    "request": "^2.88.0",
+    "systeminformation": "4.0.10"
+  },
+  "qConfig": {
+    "geometry": {
+      "width": 10,
+      "height": 1,
+      "defaults": {
+        "origin": {
+          "x": 0,
+          "y": 1
+        }
+      }
+    }
+  }
+}
