@@ -1,5 +1,5 @@
-// Library to track cpuUsage
-const os = require('os-utils');
+// System information library
+const si = require('systeminformation');
 
 // Library to send signal to Q keyboards
 const q = require('daskeyboard-applet');
@@ -11,32 +11,32 @@ const colors = ['#00FF00', '#00FF00', '#00FF00', '#00FF00', '#FFFF00', '#FFFF00'
 
 const logger = q.logger;
 
-class CpuUsage extends q.DesktopApp {
+class CpuTemp extends q.DesktopApp {
   constructor() {
     super();
     // run every 3000 ms
     this.pollingInterval = 3000;
-    logger.info("CPU Usage Meter ready to go!");
+    logger.info("CPU Temperature initialized");
   }
 
   // call this function every pollingInterval
   async run() {
-    return this.getCpuUsage().then(percent => {
+    return this.getCpuTemp().then(percent => {
       this.deleteOldSignals();
 
       return new q.Signal({
         points: [this.generatePoints(percent)],
-        name: "CPU Usage",
-        message: Math.round(percent * 100) + "%",
+        name: "CPU Temp",
+        message: `%{Math.round(percent * 100)}%`,
         isMuted: true, // don't flash the Q button on each signal
       });
     });
   }
 
-  async getCpuUsage() {
+  async getCpuTemp() {
     return new Promise((resolve) => {
-      os.cpuUsage(v => {
-        resolve(v);
+      si.cpuTemperature(t => {
+        resolve(t);
       })
     })
   }
@@ -90,7 +90,7 @@ class CpuUsage extends q.DesktopApp {
 }
 
 module.exports = {
-  CpuUsage: CpuUsage
+  CpuTemp: CpuTemp
 };
 
-const cpuUsage = new CpuUsage();
+const cpuUsage = new CpuTemp();
